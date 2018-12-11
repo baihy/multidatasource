@@ -1,6 +1,6 @@
 import com.baihy.config.DatabaseConfig;
-import com.baihy.dao.UserDao;
 import com.baihy.domain.User;
+import com.baihy.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +18,10 @@ import java.util.UUID;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {DatabaseConfig.class})
-public class UserDaoTest {
+public class UserServiceTest {
 
     @Autowired
-    private UserDao userDao;
+    private UserService userService;
 
     @Test
     public void testSave() {
@@ -29,7 +29,7 @@ public class UserDaoTest {
         param.setId(UUID.randomUUID().toString().replace("-", ""));
         param.setUsername("用户名");
         param.setPassword("password");
-        int result = userDao.save(param);
+        int result = userService.save(param);
         System.out.println(result);
     }
 
@@ -39,7 +39,7 @@ public class UserDaoTest {
         param.setId(UUID.randomUUID().toString().replace("-", ""));
         param.setUsername("用户名");
         param.setPassword("password");
-        int result = userDao.insert(param);
+        int result = userService.insert(param);
         System.out.println(result);
     }
 
